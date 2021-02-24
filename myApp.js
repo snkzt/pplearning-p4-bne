@@ -2,9 +2,9 @@ var express = require('express');
 var app = express();
 
 ////Get Query Parameter Input from the Client
-app.get('/name', (res, req) => {
-  let first = req.query.first;
-  let last = req.query.last;
+app.get('/name', (req, res) => {
+  let firstname = req.query.first;
+  let lastname = req.query.last;
   res.json({name: `${firstname} ${lastname}`});
 });
 

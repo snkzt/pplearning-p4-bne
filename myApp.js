@@ -1,10 +1,17 @@
 var express = require('express');
 var app = express();
 
-//Get Route Parameter Input from the Client
-app.get('/:word/echo', (req, res) => {
-  res.send({echo: req.params.word})
+////Get Query Parameter Input from the Client
+app.get('/name', (res, req) => {
+  let first = req.query.first;
+  let last = req.query.last;
+  res.json({name: `${firstname} ${lastname}`});
 });
+
+//// Get Route Parameter Input from the Client
+// app.get('/:word/echo', (req, res) => {
+//   res.send({echo: req.params.word})
+// });
 
 //// Chain Middleware to Create a Time Server
 // app.get('/now',(req, res, next) => {

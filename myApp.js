@@ -1,11 +1,23 @@
 var express = require('express');
 var app = express();
 
-app.use((req, res, next) => {
-console.log(req.method + " " + req.path + " - " + req.ip)
-next();
-})
+//Chain Middleware to Create a Time Server
+app.get('/now',(req, res) => {
+  req.time = new Date().toString();
+  next();
+},
+(req, res) => {
+  res.send({'time':req.time});
+}
+);
 
+// Implement a Root - Level Request Logger Middleware
+// app.use((req, res, next) => {
+//   console.log(`${req.method} ${req.path} - ${req.ip}`);
+//   next();
+// });
+
+// Serve JSON on a Specific Route + Use the .env File
 // function word() {
 //   if (process.env.MESSAGE_STYLE === "uppercase") {
 //     return "Hello json".toUpperCase();
@@ -18,16 +30,13 @@ next();
 //   return res.json({'message': response});
 // });
 
-// app.use((req, res, next) => {
-//   console.log(`${req.method} ${req.path} - ${req.ip}`);
-//   next();
-// });
+//Serve Static Assets
+// app.use('/public', express.static(__dirname + '/public'));
 
+//Serve an HTML File
 // app.get('/', (req, res) => {
 //   res.sendFile(__dirname + '/views/index.html')
 // });
-
-// app.use('/public', express.static(__dirname + '/public'));
 
 module.exports = app;
 

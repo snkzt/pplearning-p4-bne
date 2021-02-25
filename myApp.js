@@ -2,8 +2,15 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+//Get Data from POST Requests
+app.post('/name', (req, res) => {
+  let firstname = req.body.first; 
+  let lastname = req.body.last;
+  res.json({name: `${firstname} ${lastname}`});
+});
+
 ////Use body-parser to Parse POST Requests
-app.use('/', bodyParser.urlencoded({extended: false}));
+// app.use('/', bodyParser.urlencoded({extended: false}));
 
 ////Get Query Parameter Input from the Client
 // app.get('/name', (req, res) => {

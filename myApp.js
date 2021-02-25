@@ -3,9 +3,9 @@ var bodyParser = require('body-parser');
 var app = express();
 
 //Get Data from POST Requests
-app.post('/name', (req, res) => {
-  let firstname = req.body.first; 
-  let lastname = req.body.last;
+app.post('/name', (req, res) => { 
+  const firstname  = req.query.first; 
+  const lastname = req.query.last;
   res.json({name: `${firstname} ${lastname}`});
 });
 

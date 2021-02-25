@@ -1,12 +1,16 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 
+////Use body-parser to Parse POST Requests
+app.use('/', bodyParser.urlencoded({extended: false}));
+
 ////Get Query Parameter Input from the Client
-app.get('/name', (req, res) => {
-  let firstname = req.query.first;
-  let lastname = req.query.last;
-  res.json({name: `${firstname} ${lastname}`});
-});
+// app.get('/name', (req, res) => {
+//   let firstname = req.query.first;
+//   let lastname = req.query.last;
+//   res.json({name: `${firstname} ${lastname}`});
+// });
 
 //// Get Route Parameter Input from the Client
 // app.get('/:word/echo', (req, res) => {
@@ -51,18 +55,6 @@ app.get('/name', (req, res) => {
 // });
 
 module.exports = app;
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
